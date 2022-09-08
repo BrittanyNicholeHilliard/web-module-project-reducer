@@ -5,7 +5,7 @@ import './App.css';
 import TotalDisplay from './TotalDisplay';
 import CalcButton from './CalcButton';
 
-import {ADD_ONE, APPLY_NUMBER, CHANGE_OPERATION, CLEAR_DISPLAY} from '../actions';
+import {ADD_ONE, APPLY_NUMBER, CHANGE_OPERATION, CLEAR_DISPLAY, SAVE_TO_MEM, APPLY_MEM, CLEAR_MEM} from '../actions';
 
 function App() {
 
@@ -33,6 +33,21 @@ function App() {
       dispatch(action)
     }
 
+    function saveToMem() {
+      const action = {type: SAVE_TO_MEM}
+      dispatch(action)
+    }
+
+    function applyMem() {
+      const action = {type: APPLY_MEM}
+      dispatch(action)
+    }
+
+    function clearMem() {
+      const action = {type: CLEAR_MEM}
+      dispatch(action)
+    }
+
   return (
     <div className="App">
       <nav className="navbar navbar-dark bg-dark">
@@ -50,9 +65,9 @@ function App() {
             </div>
             
             <div className="row">
-              <CalcButton value={"M+"}/>
-              <CalcButton value={"MR"}/>
-              <CalcButton value={"MC"}/>
+              <CalcButton value={"M+"} onClick={saveToMem}/>
+              <CalcButton value={"MR"} onClick={applyMem}/>
+              <CalcButton value={"MC"} onClick={clearMem}/>
             </div>
 
             <div className="row">
